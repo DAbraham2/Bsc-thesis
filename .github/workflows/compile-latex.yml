@@ -21,7 +21,7 @@ jobs:
       uses: maxheld83/ghpages@68f783a4f5313d776c1599e18479607e71c9c738  # v0.3.0
       env:
         BUILD_DIR: pdf/
-        GH_PAT: x-access-token:${{ secrets.GITHUB_TOKEN }}
+        GH_PAT: x-access-token:${{ secrets.GH_PAT }}
       # https://github.com/marketplace/actions/twitter-together#setup
       # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepsif
       # https://help.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context
