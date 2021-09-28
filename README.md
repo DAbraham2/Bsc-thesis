@@ -7,4 +7,4 @@ A [continuously maintained](https://github.com/FTSRG/thesis-template-latex/graph
 
 The latest PDF output of the build:
 
-https://dabraham2.github.io/Bsc-thesis/thesis.pdf
+[Thesis](https://dabraham2.github.io/Bsc-thesis/thesis.pdf)
