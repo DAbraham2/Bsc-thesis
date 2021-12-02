@@ -1,0 +1,45 @@
+\section{FIT Allokáció} \label{sec:fit_allocation}
+Az ipari rendszerek egyre összetettebbekké váltak az évek során. 
+Emellett mostanság egyre több ilyen rendszer tartalmaz elektronikát és szoftvert, 
+tehát a funkcionális biztonságnak folyamatosan nő a fontossága. (Schabe, 2018 \cite{Schabe})
+
+A safety integrity level (SIL) egy diszkrét érték ami meghatározza a használandó módszereket, technikákat a véletlenszerű és szisztematikus hibák elkerülése érdekében.
+A SIL-ek koncepciója már több szabvány rendszerben ki lett fejlesztve.
+Ezek között legismertebb szabványok az IEC 61508, DEF-STAN-0056, EN 50126, EN 50128, EN 50129 és még sok más.
+
+A SIL-nek két fő aspektusa van:
+\begin{enumerate}
+    \item Egy cél hibaráta, amit a rendszernek nem szabad meghaladni, hogy tudja kezelni a véletlen hibákat
+    \item Módszerek és technikák halmaza, amit a szisztematikus hibákat kezeli 
+\end{enumerate}
+
+Itt fontos megjegyezni, hogy szoftverben csak és kizárólag szisztematikus hibákat vesznek figyelembe és nincs megadva cél hibaráta. Ez abból adódik, hogy a szoftverben nincs véletlenszerű hiba.
+
+\subsection{Különböző SIL-ek}
+A \ref{tab:SILs} táblázat példát ad a SIL-ek és a tűrhető hibaráta kapcsolatára, ahogy három szabvány, az IEC 61508, az EN 50129 és a DEF-STAN-0056 definiálja.
+
+A tűrhető hibaráta (THR) egy eszköz veszélyes hibáinak maximális rátája, amit a szabvány definiál bizonyos safety integrity szinthez.
+Látni kell azt, hogy bár az IEC és EN szabványoknál azonosak a THR értékek, a DEF-STAN-0056-ban eltér.
+Ezért a szabványok közti átjárás nem mindig triviális.
+Attól még, hogy a THR értékek hasonlóak az IEC és EN szabványok között, az rendszer szintű hibaelkerülő módszerek különböznek, ezért ezek a SIL-ek sem ugyan azok.
+\begin{table}[ht]
+	\footnotesize
+	\centering
+	\begin{tabular}{ l c c }
+		\toprule
+		SIL & IEC 61508/EN 50129 & DEF-STAN-0056 \\
+		\midrule
+		1 & \(10^{-6}/h \leq\) THR \(< 10^{-5}/h\) & Frequent \(\approx 10^{-2}/h\)\\
+		2 & \(10^{-7}/h \leq\) THR \(< 10^{-6}/h\)  & Probable \(\approx 10^{-4}/h\)\\
+		3 & \(10^{-8}/h \leq\) THR \(< 10^{-7}/h\)  & Occasional \(\approx 10^{-6}/h\)\\
+		4 & \(10^{-9}/h \leq\) THR \(< 10^{-8}/h\)  & Remote \(\approx 10^{-8}/h\) \\
+		\bottomrule
+	\end{tabular}
+	\caption{SIL értékek több szabvány és THR szerint}
+	\label{tab:SILs}
+\end{table}
+
+\subsection{Safety integrity szintek kombinációja}
+Ebben a részben a különböző szabványok SIL szintjeinek kombinációját mutatom be.
+
+\subsubsection{DEF-STAN-0056}
