@@ -43,3 +43,73 @@ Attól még, hogy a THR értékek hasonlóak az IEC és EN szabványok között,
 Ebben a részben a különböző szabványok SIL szintjeinek kombinációját mutatom be.
 
 \subsubsection{DEF-STAN-0056}
+A szabvány a következő szabályokat definiálja a 7.4.4. rész 5.8. táblázatában:
+\begin{itemize}
+	\item Két SIL3 eszköz párhuzamos kombinációjaként létrejövő rendszer SIL4-es besorolású lesz.
+	\item Két SIL2 eszköz párhuzamos kombinációjaként létrejövő rendszer SIL3-es besorolású lesz.
+	\item Két SIL1 eszköz párhuzamos kombinációjaként létrejövő rendszer SIL2-es besorolású lesz.
+	\item Két eszköz párhuzamos kombinációjaként - ahol az eszközök rendre SIL X és SIL Y besorolásúak - létrejövő rendszer SIL értéke SIL max(x,y).
+\end{itemize}
+
+Az olvasót a szabvány figyelmezteti, hogy ne keverje össze ezeket a szabályokat az EN 20129\cite{EN50129} által definiált safety integrity szintekkel.
+
+Továbbá jelen esetben a "párhuzamos kombináció" azt jelenti, hogy a két eszköz vagy funkció úgy van társítva, hogy a veszélyes hiba kiváltásához mind a két eszköz hibája szükséges.
+
+\subsubsection{IEC 61508}
+A szabvány nem rendelkezik előre definiált szabályokkal, mint a fenti esetben, de ad némi lehetőséget magasabb integritási szint elérésére kombinációk által.
+Az általános szabály a következő (lásd IEC 61508-2, 7.4.4.2.4. rész):
+\begin{center}
+	Selecting the channel with the highest safety integrity level that has been achieved for the safety funciton under consideration and the adding N safety integrity levels to determing the maximum safety integrity level for the overall combination of the subsystem.
+\end{center}
+
+Itt N a párhuzamos kombinációban résztvevő elemek hardverhiba tűrése, azaz hány veszélyes hibát tud a rendszer tolerálni.
+Továbbá a rendszerek/elemek között is létezik megkülönböztetés, A és B típus. 
+
+Egy elem A típusúnak mondható, ha a biztonsági funkció eléréséhez a következők teljesülnek:
+\begin{enumerate}
+	\item A komponens alkotórészeinek összes hibamódja jól körülhatárolt.
+	\item Hiba esetén a komponens viselkedése teljes mértékben meghatározható.
+	\item Létezik elegendő megbízható meghibásodási adat, ami bizonyítja az állított hibarátát.
+\end{enumerate}
+Minden más elem/rendszer a B kategóriába kerül.
+
+A követelményeknek való megfelelésből is látszik, hogy a szabvány nem ad egyszerű szabályokat a integritási szintek elosztásáról. 
+Nem csak a rendszerek elrendezése és ez által a hardveres hibatűrése határozza meg a SIL-t, hanem még a rendszer biztonsági hiba hányada (Safe Failure Fraction [SSF]) is.
+Az SSF meghatározásának módját a szabvány C függelékében definiálja.
+
+\subsubsection{SIRF 400}
+A Sicherheitsrichtlinie Farhrzeug (SIRF) a németországi rendelet a vasúti járművek biztonságára. 
+Németországban könnyű hivatkozni erre a dokumentumra, de az ország határain kívül nem biztosított az autómatikus megfelelése.
+
+A dokumentum SIL allokáció problémájára a következő elveket adja.
+
+Két alrandszer soros összeköttetése (például: hibafában VAGY kapuval összekötve) esetén, a legkisebb SIL érték határozza meg az összekapcsolt rendszer integritási szintjét.
+
+A párhuzamos kombinációkhoz a következő szabályok adottak:
+\begin{enumerate}
+	\item Egy SIL > 0 rendszer nem állítható össze SIL 0 elemekből.
+	\item Egy integritási szint elengedhető maximum egy szinttel egy ÉS kapu alatt.
+	\item Kizárás a 2. pont alól: Egy ág teljesen átveszi a biztonsági funkciót.
+	\item Kizárás a 2. pont alól: Common cause failure analízis kivitelezésre került.
+	\item A 4. pont esetében egy megfelelő szisztematikus módszert (FMEA, HAZOP, etc.) a hibafa legalsóbb szintjéig kell alkalmazni, hogy bebizonyosodjon a CCF kizárásának lehetősége.
+\end{enumerate}
+Az \ref{fig:sirfSIL}. ábrán látható a SIRF által megengedett kombinációk. 
+Az ábrákon zöld szín jelzi a megengedett, prios szín a tiltott kombinációkat és a fehér jelöli azokat, amikhez további elemzést kell végrehajtani, ami megmutatja az alegységek függetlenségét.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=67mm, keepaspectratio]{figures/sirf_sil1.png}\hspace{1cm}
+	\includegraphics[width=67mm, keepaspectratio]{figures/sirf_sil2.png}\\\vspace{1cm}
+	\includegraphics[width=67mm, keepaspectratio]{figures/sirf_sil3.png}\hspace{1cm}
+	\includegraphics[width=67mm, keepaspectratio]{figures/sirf_sil4.png}
+	\caption{Megengedett kombinációk az integritás szinteknek megfelelően \emph{Forrás}: SIRF 400}
+	\label{fig:sirfSIL}
+\end{figure}
+
+\subsubsection{EN 50129}
+Hazard to last independent function.
+Ezután TFFR és SIL Allocation.
+A funkciók alrészeinél a TFFR további bontása, de megmarad a SIL, performed by a suitable representation of the combination logic (RBD, FTA, Binary Decision D, Markov, Petri, etc).
+
+SIL allocation, functions controlling the same hazard, SILs shall be allocated according to the TFFR.
+For a function controlling multiple hazards, if derivation of TFFR apportionment and SIL allocation are preformed separately for each hazard, most restrictive shall apply.
