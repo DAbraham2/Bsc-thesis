@@ -3,6 +3,27 @@ Az ipari rendszerek egyre összetettebbekké váltak az évek során.
 Emellett mostanság egyre több ilyen rendszer tartalmaz elektronikát és szoftvert, 
 tehát a funkcionális biztonságnak folyamatosan nő a fontossága. (Schabe, 2018 \cite{Schabe})
 
+A RAMS\footnote{Reliability, Availability, Maintainability and Safety} követelmények allokációja szerves részét képezi az alacsonyabb szinten lévő alrendszerek tervezésének rendszer mérnöki folyamatoban.
+A allokáció célja, hogy megtalálja a leghatékonyabb fizikai architektúrát, ami megfelel a rendszerszintű követelményeknek és az allokáció funkcionális viselkedés analizálása által szervezett.
+Amikor RAMS konstukció szükséges minden teljesítménybeli követelményfajtára - megbízhatóság, elérhetőség, karbantarthatóság, biztonságosság - külön kell az allokációs folyamatot végezni.
+Az allokációs módszerek a négy különböző karakterisztikára hasonlók (BS EN 60300-3-1, 2004, \cite{en60300-3-1}).
+
+Amikor az allokáció a tervezés olyan korai fázisában kezdődik, amikor még nincs elegendő rendelkezésre álló információ az allokációt folyamatosan frissíteni kell a funkcionális analízis során.
+A rendszer alacsonyabb szintjein lévő allokáció szükséges a termék meghatározási fázishoz és céljaihoz (BS EN 60300-1, 2004):
+\begin{itemize}
+	\item Hogy igazolja a teljes rendszer RAMS követelméyneinek megvalósíthatóságát,
+	\item Hogy meghatározzon ellenőrizhető RAMS design követelményeket alacsony szinten és
+	\item Hogy meghatározzon egyértelmű és megvalósítható RAMS követelményeket az alrendszerek és komponensek számára.
+\end{itemize}
+Általánosságban az allokációs folyamat a következő lépésekből áll:
+\begin{itemize}
+	\item A rendszer tanulmányozása
+	\item Azon területek megtalálása, ahol a terv és a hozzá tartozó RAMS karakterisztika információk elérhetők.
+	\item Alkalmas súlyok hozzárendelése és
+	\item Meghatározni a magasszintű követelményhez való hozzájárulását
+\end{itemize}
+
+
 A safety integrity level (SIL) egy diszkrét érték ami meghatározza a használandó módszereket, technikákat a véletlenszerű és szisztematikus hibák elkerülése érdekében.
 A SIL-ek koncepciója már több szabvány rendszerben ki lett fejlesztve.
 Ezek között legismertebb szabványok az IEC 61508, DEF-STAN-0056, EN 50126, EN 50128, EN 50129 és még sok más.
@@ -38,6 +59,23 @@ Attól még, hogy a THR értékek hasonlóak az IEC és EN szabványok között,
 	\caption{SIL értékek több szabvány és THR szerint}
 	\label{tab:SILs}
 \end{table}
+
+\section{Allokációs módszerek}
+MIL-HDBK-388B (1998) nyújt négy módszert az allokációhoz, melyek lentebb láthatók:
+\begin{itemize}
+	\item Egyenlő elosztás módszer\footnote{Equal allocation technique}
+	\item ARINC\footnote{Aeronautical Radio, Inc} elosztás módszer
+	\item ,,Feasibility of objective'' módszer és
+	\item AGREE\footnote{Advisory Group on Reliability of Electronic Equipment} módszer
+\end{itemize}
+
+Az egyenlő elosztás módszer és elosztási metodika, amely egyenlő részekre osztja fel a megbízhatósági követelményt a rendszer alrendszerei között.
+Ezt általában akkor használják, amikor nem áll rendelkezésre információ az alrendszerekhez.
+Az ARINIC módszer akkor alkalmazható, amikor csak az alrendszer meghibásodási ráta áll rendelkezésre. 
+Az allokáció súlyozva van az alrendszer hozzájárulásával a rendszer hibára nézve.
+A harmadik módszer az alrendszer tervező megfelelő tapasztalata és tudásása alapján jön létre.
+A módszer figyelembe veszi a rendszer komplexitását, környezetét és működési tartományát úgyan úgy, mint a hibarátát.
+Az AGREE technika az alrendszer összetettsége és az alrendszer hibájának a rendszerhibához való közreműködése alapján allokál (MIL-HDBK-388B, 1998).
 
 \subsection{Safety integrity szintek kombinációja}
 Ebben a részben a különböző szabványok SIL szintjeinek kombinációját mutatom be.
@@ -105,11 +143,3 @@ Az ábrákon zöld szín jelzi a megengedett, prios szín a tiltott kombináció
 	\caption{Megengedett kombinációk az integritás szinteknek megfelelően \emph{Forrás}: SIRF 400}
 	\label{fig:sirfSIL}
 \end{figure}
-
-\subsubsection{EN 50129}
-Hazard to last independent function.
-Ezután TFFR és SIL Allocation.
-A funkciók alrészeinél a TFFR további bontása, de megmarad a SIL, performed by a suitable representation of the combination logic (RBD, FTA, Binary Decision D, Markov, Petri, etc).
-
-SIL allocation, functions controlling the same hazard, SILs shall be allocated according to the TFFR.
-For a function controlling multiple hazards, if derivation of TFFR apportionment and SIL allocation are preformed separately for each hazard, most restrictive shall apply.
