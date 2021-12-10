@@ -1,5 +1,5 @@
 %----------------------------------------------------------------------------
-\chapter{\caseStudy}
+\chapter{\caseStudy} \label{chap:cs}
 %----------------------------------------------------------------------------
 
 \section{A tanulmány háttere}
@@ -62,45 +62,5 @@ A parkoló fék felel a jármű helyben tartásáért, miközben a jármű üzem
 A WPS\footnotemark[\value{footnote}] egy olyan rendszer, amely optimalizálja a fékteljesítményt és védelmet nyújt a kerék és a sín sérülése ellen gyenge súrlódási viszonyok között.
 \footnotetext{Wheelslide Protection System}
 
-\section{Funkcionális dekompozíció}
-A \ref{fig:func_arch}. ábrán látható a funkcionális dekompozíciójának block definition diagram-ja.
-Ezen látható, hogy a fékrendszer több elemet is támogat a \ref{sec:vjfr}. részben taglalt funkciók közül.
-A rendszer a következő öt funkciókkal rendelkezik, ahogy az a \ref{fig:func_arch}. ábrán is látható: 
-(1) üzemi fék (service brake), 
-(2) vészfék (emergency brake), 
-(3) biztonsági fék (security brake),
-(4) parkoló fék (parking brake) és 
-(5) kerékcsúszás gátlás (wheelslide protection).
-Továbbá az ábrán az is látható, hogy a fékrendszer képes forgóvázra nehezedő súly által szabályozni a fékezési erőt.
 
-\begin{figure}
-    \footnotesize
-    \centering
-    \includegraphics[width=150mm, keepaspectratio]{figures/Architecture.png}
-    \caption{A tervezett fékrendszer funkcionális dekompozíciója}
-    \label{fig:func_arch}
-\end{figure}
-
-Az \ref{fig:func_arch_ibd}. ábrán látható a rendszer belső felépítése (IBD\footnote{internal block diagram}).
-Az ábra tartalmazza és definiálja az alrendszerek kapcsolatát, továbbá leírja a rendszer külső csatlakozási pontjait portok által.
-\begin{figure}
-    \footnotesize
-    \centering
-    \includegraphics[width=150mm, keepaspectratio]{figures/Architecture_ibd.png}
-    \caption{A fékrendszer belső felépítése}
-    \label{fig:func_arch_ibd}
-\end{figure}
-
-\subsection{Üzemi fék}
-Az dekompozíciós folyamatot az üzemi fék alrendszeren folytatva az \ref{fig:service_brake_bdd}. ábra mutatja az üzemi fék funkcionális felbontását/BDD\footnote{Block Definition Diagram}-jét.
-Az ábrán látható, hogy ez egy vezérlő funkció ezért megjelenik a vezérlő-rendszer-visszacsatoló hármas a modellben.
-Továbbá az is látszik, hogy a vezérlő funkció egy összetett eleme az alegységnek.
-
-\begin{figure}
-    \footnotesize
-    \centering
-    \includegraphics[width=150mm, keepaspectratio]{figures/Service_Brake_bdd.png}
-    \caption{Üzemi fék blokk definition diagramm-ja.}
-    \label{fig:service_brake_bdd}
-\end{figure}
 
