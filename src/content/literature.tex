@@ -149,6 +149,71 @@ Lehetséges hibamódok szoftvereknél:
 \end{itemize}
 
 \subsection{HAZOP analízis}
+A Hazard and operability study (HAZOP) analízis egy szisztematikus vizsgálat, ami feltárja és tanulmányozza egy rendszer potenciális veszélyeit és üzemeltetési problémáit.
+Rendezett, struktúrált és módszeres folyamatot követ\cite{Ericson}.
+
+A HAZOP-ot az angol Chemical Industry Insitute formalizálta a '70-es években.
+A módszer széleskörben elterjedt számos biztonságkritikus iparágban, mint a vegyipar.
+
+A módszertan néhány útmutató szó segítségével próbálja rávezetni a vizsgálót a problémás részekre.
+Ilyen útmutató szavak lehetnek például: 'Nem', 'Több', 'Kevesebb', 'Fordítva' stb., mint az látható a \ref{tab:hazop}. táblázatban.
+A HAZOP módszer leghatékonyabb a részletes terv kidolgozása után, mert ilyenkor már működtetési problémákat is feltár.
+A \ref{tab:hazop} táblázat egy vonat ajtó működési problémáit tárja fel egy peronnál HAZOP segítségével.
+
+\begin{table}[!ht]
+    \footnotesize
+    \begin{tabular}{|l p{25mm} p{25mm} p{25mm}|}
+        \toprule
+        Útmutató & Eltérés & Ok & Okozat \\
+        \midrule
+        Nem & Az ajtó nem nyílik & Hibás mechanizmus & Nem tudnak leszállni az utasok \\
+        \midrule
+        Több & Az ajtó túl korán nyílik & Kezelő hibázik & Lehetséges sérülés \\ 
+        \midrule
+        Kesevebb & Csak egy ajtó nyílik ki & Hibás mechanizmus & Korlátozott leszállás, lehetséges sérülés\\ 
+        \midrule
+        Ugyan úgy & A vonat mindkét oldalán nyílik az ajtó & Hiba a vezérlőben & Lehetséges sérülés, ha a rossz oldalon szállnak le\\ 
+        \midrule
+        Más mint & Rossz oldalon nyílik az ajtó & Vezérlő hiba & Lehetséges sérülés, ha a rossz oldalon szállnak le \\
+        \bottomrule
+    \end{tabular}
+    \caption{Egy példa a HAZOP használatára}
+    \label{tab:hazop}
+\end{table}
 
 \subsection{LOPA}
-Layer of Protection Analysis (LOPA) \cite{LOPA1}
+Layer of Protection Analysis-t (LOPA) először az 1990-es évek végén kezdték el alkalmazni a vegyiparban.
+Ahogy a módszert egyre szélesebb körben alkalmazták, az AIChE Center of Chemical Process Safety (CCPS) elkezdett irányelveket kiadni hozzá.
+Később más szervezetek is elkeztek a LOPA-ra hivatkozni, mintpéldául az IEC\footnote{International Electrotechnical Commission} vagy az ISA\footnote{International Society of Automation} \cite{WILLEY201412}.
+
+A layer of protection analysis megfeleltethető az Event Tree Analysis (ETA) egy megfelelő adaptációjának\cite{HRRS}, lásd: \ref{fig:lop_eta}. ábra.
+
+\begin{figure}
+    \footnotesize
+    \centering
+    \includegraphics[width=100mm, keepaspectratio]{figures/lopa.jpg}
+    \caption{LOPA analízis esemény fával ábrázolva (Forrás: \cite{LOPA1})}
+    \label{fig:lop_eta}
+\end{figure}
+
+A LOPA analízist általában közvetlenül a HAZOP tanulmány után készítik el, de még a hibafa analízis előtt.
+
+\subsubsection{LOPA koncepciója}
+A LOPA koncepciója összefoglalva:
+\begin{enumerate}
+    \item Megtalálni azokat az eseményeket, amelynek a külvilágra hatása van. Meghatározni ezek hatását(emberek, környezet, tulajdon)
+    \item Felsorolni a ezeknek az eseményeknek a kezdeti okát.
+    \item Megbecsülni a kezdeti okok frekvenciáját.
+    \item Minden ok-okozati párra felsorolni a független védelmi rétegjét (IPL\footnote{Independent Protection Layer}).
+    \item Meghatározni a hiba valószínűségét minden IPL-nek.
+    \item Kiszámolni a mérsékelt előfordulási frekvenciát az összes ok-okozati párra.
+    \item Összevetni a kapott frekvenciát az előre definiált tűrhető veszéllyel.
+\end{enumerate}
+
+Ha mindezek után a kapott érték nem teljesíti a kritériumot az alábbi opciókat lehet végrehajtani:
+\begin{itemize}
+    \item További rétegeket adunk a rendszerhez.
+    \item Növeljük valamelyik réteg SIL szintjét (azaz csökkentjük annak frekvenciáját)
+    \item Újratervezzük a folyamatot vagy
+    \item még részletesebb vizsgálatot folyatatunk, pédául: Hibafa Analízissel.
+\end{itemize}
