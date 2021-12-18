@@ -1,11 +1,102 @@
 %----------------------------------------
 \chapter{\analysis}\label{chap:analysis}
 %----------------------------------------
-A következő fejezetben a különböző vizsgálatok alanya a rendszer vezérlő elektronikája lesz.
-Ennek az egységnek révén, hogy tisztán elektronikus hibarátája a kádgörbe középső szakaszán konstans $\lambda$ értékkel közelíthető.
-Így a hibaráta időbeliségével nem kell foglalkozni.
+A dolgozat során elkészített rendszer terv csak akadémiai célokat szolgál, ezért nem követi teljes mértékben a valóságot.
+Teljes mértékben kielégítő biztonsági vizsgálatot ezért nem lehet végezni a rendszeren.
+A következő részekben inkább szeretném bemutatni egyes elemzési módszerek lényegét, alkalmazhatóságát mintsem egy valós projekt szerinti precíz megvalósítsát.
 
-\section{HAZOP analízis}
+Mivel a biztonságosság kiemelten fontos témakör az iparágban, ezért az elemzésben a valósághoz hasonló értékek szerepelnek, de ezen értékek kitaláltak és reprezentatív jellegűek.
+Az analízis során feltárt kockázatok besorolását az EN 50126\cite{EN50126-1} első részében leírt kockázat mátrix kalibrációs táblázatai szerint határoztam meg.
+
+A frekvenciák besorolásához a \ref{tab:freqency}. táblázatot készítettem el.
+Ennek segítségével besorolhatók egyes kvantitatív értékek az elfogadási mátrixban.
+
+Továbbá a \ref{tab:serverity} és a \ref{tab:risk} segédtáblázatok alapján már meghatározható az a táblázat, amely a balesetek súlyossága és a hiba előfordulásának gyakorisága alapján meghatározza a kockázat elfogadásának lehetőséget.
+Ezt a táblázatot reprezentálja a \ref{tab:risk_mat} táblázat.
+
+Az elemzések további szakaszaiban ezen táblázatok felhasználása szerint lesznek meghatározva az előforduló hibák.
+\begin{table}
+    \footnotesize
+    \centering
+    \begin{tabular}{ |c|p{10em}|p{8em}|p{10em}| }
+        \hline
+        Frekvencia szint & Leírás & Frekvencia példa egy 24 órában működő eszköznél & Frekvencia \\
+        \hline
+        Gyakori & Az esemény gyakran bekövetkezik & Több mint egyszer 6 hónapos időszak alatt & $f \leq 1\times10^{-3}$ \\
+        \hline
+        Valószínű & Az esemény várhatóan többször bekövetkezik & Hozzávetólegesen egyszer 6 hét és egy év között & $ 1\times10^{-3} < f \leq 1\times10^{-4} $ \\
+        \hline
+        Alkalmi&Az esemény több alkalommal bekövetkezhet & Hozzávetőlegesen egyszer egy év és 10 év között & $1\times10^{-4} < f \leq 1\times10^{-5}$ \\
+        \hline
+        Ritka&Valószínű, hogy bekövetkezik valamikor a rendszer élettartama során & Hozzávetőlegesen egyszer 10 év és 1 000 év között & $1\times10^{-5} < f \leq 1\times10^{-7}$ \\
+        \hline
+        Valószínűtlen&Velószínűtlen a bekövetkezés, de megtörténhet & Hozzávetőlegesen egyszer 1 000 év és 100 000 év között & $1\times10^{-7} < f \leq 1\times10^{-9}$ \\
+        \hline
+        Erősen valószínűtlen&Az esemény vélhetően egyszer sem fog bekövetkezni & Hozzávetőlegesen egyszer 100 000 éveben vagy kevesebbszer & $1\times10^{-9} < f$ \\
+        \hline
+    \end{tabular}
+    \caption{A veszély besorolási mátrix frekvencia tartomány kalibrációja. Saját adatok, a \cite{EN50126-1} alapján.}
+    \label{tab:freqency}
+\end{table}
+
+\begin{table}
+    \footnotesize
+    \centering
+    \begin{tabular}{ |c|p{10em}|p{10em}| }
+        \hline
+        Súlyossági kategória & Következmények az emberekre / környezetre                                                                                                     & Következmények a szolgáltatásokra \\ \hline
+        Katasztrofális       & Emberek tömegét befolyásolja és többek halálához vezethez és/vagy  súlyos környezeti károsodás      & -                                 \\ \hline
+        Kritikus             & Emberek kis számát befolyásolja és legalább egy halálesetet okoz és/vagy  nagy környezeti károsodás & Egy fontos rendszer elvesztése    \\ \hline
+        Marginális           & Nincs lehetőség halálesetre, cask súlyos vagy könnyű sérülések és/vagy kis környezeti károsodás     & Súlyos rendszer sérülés           \\ \hline
+        Jelentéktelen        & Lehetséges könnyű sérülés                                                                                                                     & Jelentéktelen rendszer sérülés    \\ \hline
+    \end{tabular}
+    \caption{Súlyossági kategóriák, az EN 50126-1 alapján.}
+    \label{tab:serverity}
+\end{table}
+
+\begin{table}
+    \footnotesize
+    \centering
+    \begin{tabular}{ |c|p{20em}| }
+        \hline
+        Kockázat elfogadási kategória & Végrehajtandó intézkedések\\ \hline
+        Tolerálhatatlan & A kockázatot meg kell szüntetni \\ \hline
+        Nem kívánatos & A kockázatot csak abban az esetben lehet elfogadni, ha annak csökkentése nem lehetséges \\ \hline
+        Tolerálható & A kockázat tolerálható és elfogadható megfelelő ellenőrzéssel (például: karbantartási útmutatók vagy szabályok) \\ \hline
+        Elhanyagolható & A kockázat minden további nélkül elfogadható \\ \hline
+    \end{tabular}
+    \caption{Kockázat elfogadási kategóriák, az EN 50126-1 alapján.}
+    \label{tab:risk}
+\end{table}
+
+\begin{table}
+    \centering
+    \begin{tabular}{|l|l|l|l|l|} 
+        \hline
+        Előfordulási frekvencia & \multicolumn{4}{l|}{Kockázat elfogadási kategória}                    \\ 
+        \hline
+        Gyakori                 & Nem kívánatos  & Tolerálhatatlan & Tolerálhatatlan & Tolerálhatatlan  \\ 
+        \hline
+        Valószínű               & Tolerálható    & Nem kívánatos   & Tolerálhatatlan & Tolerálhatatlan  \\ 
+        \hline
+        Alkalmi                 & Tolerálható    & Nem kívánatos   & Nem kívánatos   & Tolerálhatatlan  \\ 
+        \hline
+        Ritka                   & Elhanyagolható & Tolerálható     & Nem kívánatos   & Nem kívánatos    \\ 
+        \hline
+        Valószínűtlenű          & Elhanyagolható & Elhanyagolható  & Tolerálható     & Nem kívánatos    \\ 
+        \hline
+        Erősen valószínűtlen    & Elhanyagolható & Elhanyagolható  & Elhanyagolható  & Tolerálható      \\ 
+        \hline
+        \multicolumn{1}{l|}{}   & Jelentéktelen  & Merginális      & Kritikus        & Katasztrofális   \\ 
+        \cline{2-5}
+        \multicolumn{1}{l|}{}   & \multicolumn{4}{l|}{A baleset súlyossága}                             \\
+        \cline{2-5}
+        \end{tabular}
+    \caption{Kockázat elfogadási mátrix.}
+    \label{tab:risk_mat}
+\end{table}
+
+\input{content/analysis_hazop}
 
 \section{LOPA analízis}
 

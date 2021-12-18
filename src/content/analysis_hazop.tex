@@ -1,0 +1,35 @@
+\section{HAZOP analízis}
+A vizsgálatot HAZOP tanulmány készítésével kezdtem.
+Ez alkalmas a rendszer platform modellje alapján előre meghatározott módszertan szerint szisztematikusan eltárni az adott alrendszerek tervezettől való eltérő viselkedéseinek feltárására.
+
+A vizsgálat segéd szavak segítségével vezeti rá az elemző (csapat) gondolkodását a lehetséges eltérésekre.
+A módszertan által nyújtott lehetséges szavak csak egy részét felhasználva, a következő iránymutató szavak lettek felhasználva a dolgozatban: (1) NEM (NO), (2) KEVESEBB (LESS), (3) TÖBB (MORE).
+
+Ezután két alrendszert vizsgáltam a módszertan szerint, ezek pedig a hidraulikus fékolló (Hydraulic Caliper) és a vezérlő elektronika (Control Electronics).
+
+A HAZOP tanulmány eredményessége nagyban függ az azt végrehajtó csapat kreativitásán, ezért nem feltételezhető az adott egység minden egyes hibaforrásának észlelése/feltárása.
+
+Az általam elvégzett vizsgálat során a \ref{tab:hazop_vizsg}. táblázatban látható potenciális eltérésekre jutottam.
+
+
+\begin{table}
+    \centering
+    \begin{tabular}{ |p{18mm}|p{15mm}|p{20mm}|p{20mm}|p{25mm}|p{25mm}| }
+        \hline
+        Item & Guide word & Deviation & Cause & Consequence & Existing controls \\
+        \hline
+        Hydraulic Caliper & NO & No brake force & Caliper failure & Longer braking distance / possible crash with traffic & Recommended service interval / routine checks \\
+        & LESS & Reduced brake force & Worn out brakepads & Longer braking distance / possible crash with traffic & Recommended service interval / routine checks \\
+        & LESS & Reduced brake force & Control loop failure & Longer braking distance / possible injury to multiple people & - \\
+        & MORE & More brake force & Failure of pressure generation & Possibility of train stuck on track / minor injuries & - \\
+        \hline
+        Control Electronics & NO & No input voltage & Train battery line failure & Train stuck on track & - \\
+        & MORE & Higher input voltage than specified & Train battery line failure & Control electronics power supply failure & Over voltage protection \\
+        & MORE & Higher brake demand than requested & Control output stuck at low & Possibility of train stuck on track / minor injuries & Under voltage protection \\
+        & LESS & Lower input voltage than specified & Train battery line failure & Possibility of train stuck on track / minor injuries & - \\
+        & LESS & Lower brake demand than requested & Control output stuck at high & Longer braking distance / possible injury to multiple people & Error signaling \\
+        \hline
+    \end{tabular}
+    \caption{HAZOP vizsgálat a hidraulikus fékolló és vezérlő elektronika komponensekre.}
+    \label{tab:hazop_vizsg}
+\end{table}
