@@ -85,3 +85,14 @@ A valószínűségeket az alábbi egyenlet alapján lehet megkapni, a rendszer a
     P&=1-e^{-\lambda t} \\
     &=1-e^{-150000\lambda}
 \end{align}
+
+\begin{figure}
+    \footnotesize
+    \centering
+    \includegraphics[width=150mm, keepaspectratio]{figures/QuantiFTA.png}
+    \caption{Kvantitatív FTA az adott értékek alapján}
+    \label{fig:quant}
+\end{figure}
+
+Amint az az \ref{fig:quant}. ábrán látható a kvantitatív analízis elvégzése után látható az alrendszer teljes élelttartamra számított detektálatlan hibájának a valószínűsége.
+Ez sajnos nem egy szép alacsony szám, de vegyük figyelembe, hogy ez százötven-ezer órára vetített érték és még így is a rendszenszer számára allokált SIL kategóriába tartozik, sőt még a rendszer számára osztott TFFR-en is belül helyezkedik.
