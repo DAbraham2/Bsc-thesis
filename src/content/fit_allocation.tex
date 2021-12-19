@@ -1,15 +1,15 @@
 \section{FIT Allokáció} \label{sec:fit_allocation}
 Az ipari rendszerek egyre összetettebbekké váltak az évek során. 
 Emellett mostanság egyre több ilyen rendszer tartalmaz elektronikát és szoftvert, 
-tehát a funkcionális biztonságnak folyamatosan nő a fontossága. (Schabe, 2018 \cite{Schabe})
+tehát a funkcionális biztonságnak folyamatosan nő a fontossága.\cite{Schabe}
 
 A RAMS\footnote{Reliability, Availability, Maintainability and Safety} követelmények allokációja szerves részét képezi az alacsonyabb szinten lévő alrendszerek tervezésének rendszer mérnöki folyamatoban.
 A allokáció célja, hogy megtalálja a leghatékonyabb fizikai architektúrát, ami megfelel a rendszerszintű követelményeknek és az allokáció funkcionális viselkedés analizálása által szervezett.
 Amikor RAMS konstukció szükséges minden teljesítménybeli követelményfajtára - megbízhatóság, elérhetőség, karbantarthatóság, biztonságosság - külön kell az allokációs folyamatot végezni.
-Az allokációs módszerek a négy különböző karakterisztikára hasonlók (BS EN 60300-3-1, 2004, \cite{en60300-3-1}).
+Az allokációs módszerek a négy különböző karakterisztikára hasonlók. \cite{en60300-3-1}
 
 Amikor az allokáció a tervezés olyan korai fázisában kezdődik, amikor még nincs elegendő rendelkezésre álló információ az allokációt folyamatosan frissíteni kell a funkcionális analízis során.
-A rendszer alacsonyabb szintjein lévő allokáció szükséges a termék meghatározási fázishoz és céljaihoz (BS EN 60300-1, 2004):
+A rendszer alacsonyabb szintjein lévő allokáció szükséges a termék meghatározási fázishoz és céljaihoz \cite{en60300-1}:
 \begin{itemize}
 	\item Hogy igazolja a teljes rendszer RAMS követelméyneinek megvalósíthatóságát,
 	\item Hogy meghatározzon ellenőrizhető RAMS design követelményeket alacsony szinten és
@@ -61,7 +61,7 @@ Attól még, hogy a THR értékek hasonlóak az IEC és EN szabványok között,
 \end{table}
 
 \section{Allokációs módszerek}
-MIL-HDBK-388B (1998) nyújt négy módszert az allokációhoz, melyek lentebb láthatók:
+MIL-HDBK-388B\cite{388B} nyújt négy módszert az allokációhoz, melyek lentebb láthatók:
 \begin{itemize}
 	\item Egyenlő elosztás módszer\footnote{Equal allocation technique}
 	\item ARINC\footnote{Aeronautical Radio, Inc} elosztás módszer
@@ -140,6 +140,6 @@ Az ábrákon zöld szín jelzi a megengedett, prios szín a tiltott kombináció
 	\includegraphics[width=67mm, keepaspectratio]{figures/sirf_sil2.png}\\\vspace{1cm}
 	\includegraphics[width=67mm, keepaspectratio]{figures/sirf_sil3.png}\hspace{1cm}
 	\includegraphics[width=67mm, keepaspectratio]{figures/sirf_sil4.png}
-	\caption{Megengedett kombinációk az integritás szinteknek megfelelően \emph{Forrás}: SIRF 400}
+	\caption{Megengedett kombinációk az integritás szinteknek megfelelően, sorrendben SIL1, SIL2, SIL3, SIL4 \emph{Forrás}: SIRF 400}
 	\label{fig:sirfSIL}
 \end{figure}

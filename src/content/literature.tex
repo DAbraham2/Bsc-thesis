@@ -49,7 +49,7 @@ Az analízis az előfordulható hibamódok egy részhalmazára fokuszál, külö
 A kapuk (gate), események (event) és vágások (cut set) jelentik a legfőbb elemzési pontjait.
 A logikai diagramm - 'ÉS' és 'VAGY' kapuk - adja meg a FTA eredményét.
 A hibaesetek adják meg a kapuk bemeneteit és a vágások adják meg azoknak a hibaeseteknek halmazát, ami rendszerhibát okozhat.
-Az FTA-t szokás az FMECA\footnote{Failure Mode Effect and Criticallity Analysis}-val, Markov analízissel és ETA\footnote{Event Tree analysis}-val együttesen használni, hogy elfedjék az FTA limitációit (Stapelberg, 2008; BE EN 60812, 2006).
+Az FTA-t szokás az FMECA\footnote{Failure Mode Effect and Criticallity Analysis}-val, Markov analízissel és ETA\footnote{Event Tree analysis}-val együttesen használni, hogy elfedjék az FTA limitációit \cite{60812}.
 
 \begin{figure}
     \footnotesize
@@ -60,7 +60,7 @@ Az FTA-t szokás az FMECA\footnote{Failure Mode Effect and Criticallity Analysis
 
 \subsection{Megbízhatósági blokkdiagram analízis}
 A Megbízhatósági blokkdiagram (RBD\footnote{Reliability Block Diagram}) egy vizuális elemzési módszer aminek segítségével könnyen reprezentálható a rendszer logikailag összekötött struktúrája.
-Az RBD blokkjai ábrázolják a rendszer eredményes működését. Az elemzés különböző szinten jelentkezhet, mind kvalitatív, mind kvantitatív formában (BS EN 61078, 2006; BS EN 60300-3-1, 2004).
+Az RBD blokkjai ábrázolják a rendszer eredményes működését. Az elemzés különböző szinten jelentkezhet, mind kvalitatív, mind kvantitatív formában. \cite{61078,en60300-3-1}
 
 A diagramm felépíthető egyenesen a rendszer funkciónális modelljéből, ami szisztematikusan megjeleníti a funkcionális utakat.
 Sok különböző rendszerkonfigurációt képes kifejezni, például, soros, párhuzamos, rendundáns, ,,standby'' stb., ahogy az az \ref{fig:rdb} ábrán is látszik.
@@ -74,7 +74,26 @@ Az RBD-t általában abban az esetben használják, amikor különböző változ
 \end{figure}
 
 \subsection{Közös hibaforrás azonosítás}
+A rendszer biztonság fogalmának megalakulása óta nagy figyelem övezte a közös hibaforrásokat és azok azanosítását.
+Az első formalizált módszer 1998-ra tehető, amely amerikai Nukleáris Szabályzó Bizottság\footnote{U.S. Nuclear Regulatory Commission} számára készített tanulmányban szerepel.
+A közös hibaforrás azonosítására legelterjedtebb módszer a common cause failure analysis (CCFA).
+Ez az analízis szinte az összes a dolgozatban bemutatott vizsgálati módszernél elengedhetetlen, hiszen egy közös hibaforrás (CCF\footnote{Common Cause Failure}) kihagyása a biztonsági analízis során 
+A CCF egy egyfokú hiba, amely képes elrontani független redundás architektúrákat. \cite{Ericson}
 
+Az analízishez elengedhetetlen a rendszert bármilyen logikai formában ábrázolni képes modell, mint például az FTA vagy az RBD.
+
+\subsubsection{Módszertan}
+A folyamat 8 lépésből áll.
+\begin{enumerate}
+    \item Rendszer megállapítás
+    \item A rendszer kezdeti logikai modellezése
+    \item Átvilágító analízis
+    \item Részletes CCF analízis
+    \item Kimeneti kockázat értékelése
+    \item Korrekciós javaslatok
+    \item Veszélyek követése
+    \item A vizsgálat dokumentálása
+\end{enumerate}
 
 \section{Bottom-up módszerek}
 \subsection{FMEA analízis}
@@ -84,7 +103,7 @@ A módszer továbbá azonosítja azokat a módszereket is, amikkel elkerülhető
 A módszert eredetileg FMECA\footnote{Failure Mode Effect and Criticality Analysis} néven említették, amiben a ,C' betű a hibamód kritikusságát jellemezte.
 Bár a két módszert gyakran szinonímaként használják, teljesen más a megközelítésük.
 Általában az FMEA-t a hibamód hatásának súlyosságát minősíti, míg az FMECA a hibamód frekvenciáját is megvizsgálja a súlyosság mellett.
-A súlyosság és a frekvencia kombinációját a rendszer kritikusságnak vagy kockázatának nevezik (MIL-STD-1629A, 1980).
+A súlyosság és a frekvencia kombinációját a rendszer kritikusságnak vagy kockázatának nevezik \cite{MIL-STD-1629A}.
 
 A módszer során minimum a következő nyolc információt kell megállapítani:
 \begin{enumerate}
@@ -104,7 +123,7 @@ Az első megközelítésben a funkciók céljának lehetséges hibás működés
 Ez a módszer alkalmazható szoftverek esetében is.
 
 A második megközelítés leginkább hardver elemeken végzett lehetséges hibamódokra öszpontosít.
-A ,,hibrid'' megközelítés először a funkcionális analízissel kezdődik, aminek fókusza átvált a hardverre (Ericson, 2005).
+A ,,hibrid'' megközelítés először a funkcionális analízissel kezdődik, aminek fókusza átvált a hardverre \cite{Ericson}.
 
 Lehetséges példák a funkcionális hibamódokra:
 \begin{itemize}
